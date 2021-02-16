@@ -1,0 +1,49 @@
+﻿@page "/customer/add"
+@page "/customer/edit/{customerId}"
+
+@using BlazorApp.Data
+@inherits BaseAddEditCustomer
+
+<h3>@Title Customer</h3>
+<br />
+<EditForm Model="@customer" OnValidSubmit="AddOrUpdateCustomer">
+    <DataAnnotationsValidator />
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold">Company Name</label>
+        <InputText  class="form-control col-3" @bind-Value="customer.CompanyName" placeholder="Company Name" />
+    </div>
+
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold">Contact Name</label>
+        <InputText class="form-control col-3" @bind-Value="customer.ContactName" placeholder="Contact Name" />
+    </div>
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold">Address</label>
+        <InputText class="form-control col-3" @bind-Value="customer.Address" placeholder="Address" />
+    </div>
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold">City</label>
+        <InputText class="form-control col-3" @bind-Value="customer.City" placeholder="City" />
+    </div>
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold">Region</label>
+        <InputText class="form-control col-3" @bind-Value="customer.Region" placeholder="Region" />
+    </div>
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold">Postal Code</label>
+        <InputText class="form-control col-3" @bind-Value="customer.PostalCode" placeholder="PostalCode" />
+    </div>
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold">Country</label>
+        <InputText class="form-control col-3" @bind-Value="customer.Country" placeholder="Country" />
+    </div>
+    <div class="col-12 row">
+        <label class="col-2 font-weight-bold">Phone</label>
+        <InputText class="form-control col-3" @bind-Value="customer.Phone" placeholder="Phone" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" @onclick="AddOrUpdateCustomer">Save</button>
+        <button class="btn btn-light" @onclick="Cancel">Cancel</button>
+    </div>
+
+</EditForm>
