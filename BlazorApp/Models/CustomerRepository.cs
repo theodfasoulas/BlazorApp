@@ -49,11 +49,12 @@ namespace BlazorApp.Models
             }
 
         }
-        public async Task DeleteCustomerAsync(string id)
+        public async Task<bool> DeleteCustomerAsync(string id)
         {
             try
             {
                 await _dbContext.DeleteRecordAsync<CustomerDbModel>("Customers", id);
+                return true;
             }
             catch (Exception ex)
             {

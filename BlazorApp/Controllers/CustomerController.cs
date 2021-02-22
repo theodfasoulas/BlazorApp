@@ -18,39 +18,39 @@ namespace BlazorApp.Controllers
             customerRepository = _customerRepository;
         }
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAsync(string id)
+        public async Task<ActionResult<bool>> DeleteAsync(string id)
         {
             await customerRepository.DeleteCustomerAsync(id);
-            return Ok();
+            return Ok(true);
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] CustomerViewModel customer)
+        public async Task<ActionResult<CustomerViewModel>> Update([FromBody] CustomerViewModel customer)
         {
             if(customer == null)
             {
                 return BadRequest();
             }
             await customerRepository.UpdateCustomerAsync(customer.Id, customer);
-            return Ok();
+            return Ok(customer);
         }
         [HttpPost("list")]
-        public async Task<IActionResult> LoadCustomers()
+        public async Task<ActionResult<IEnumerable<CustomerViewModel>>> LoadCustomers()
         {
             var result = await customerRepository.LoadCustomersAsync();
             return Ok(result);
         }
         [HttpGet]
-        public async Task<IActionResult> LoadCustomersWithPaging([FromQuery] PagingParameters pagingParameters)
+        public async Task<ActionResult<CustomerList>> LoadCustomersWithPaging([FromQuery] PagingParameters pagingParameters)
         {
             var result = await customerRepository.LoadCustomersWithPagingAsync(pagingParameters);
             return Ok(result);
         }
         [HttpPost]
-        public async Task<IActionResult> AddCustomer([FromBody] CustomerViewModel customer)
+        public async Task<ActionResult<CustomerViewModel>> AddCustomer([FromBody] CustomerViewModel customer)
         {
             await customerRepository.AddCustomerAsync(customer);
-            return Ok();
+            return Ok(customer);
         }
 
     }

@@ -9,8 +9,8 @@ namespace BlazorApp.Models
         public CustomerProfile()
         {
             CreateMap<CustomerDbModel, CustomerViewModel>();
-            CreateMap<CustomerViewModel, CustomerDbModel>()
-               .ForMember(x => x.Id, opt => opt.Ignore());
+            CreateMap<CustomerViewModel, CustomerDbModel>();
+               //.ForMember(x => x.Id, opt => opt.I());
             CreateMap<PagedList<CustomerDbModel>, CustomerList>();
         }
     }

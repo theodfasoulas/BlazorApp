@@ -7,7 +7,7 @@ namespace BlazorApp.Models
     public interface ICustomerRepository
     {
         Task AddCustomerAsync(CustomerViewModel customerViewModel);
-        Task DeleteCustomerAsync(string id);
+        Task<bool> DeleteCustomerAsync(string id);
         Task<CustomerViewModel> GetCustomerAsync(string id);
         Task<IEnumerable<CustomerViewModel>> LoadCustomersAsync();
         Task UpdateCustomerAsync(string id, CustomerViewModel customerViewModel);
